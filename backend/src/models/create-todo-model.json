@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "my-type",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "dueDate": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "done": {
+        "type": "boolean"
+       },
+       "userId": {
+        "type": "string"
+       },
+       "attachmentUrl": {
+        "type": "string"
+       },
+       "createdAt": {
+        "type": "string",
+        "format": "date-time"
+       },
+       "id":{
+        "type": "string"
+       }
+    },
+    "required": [
+        "name",
+        "dueDate",
+        "id",
+        "createdAt",
+        "done"
+    ]
+  }

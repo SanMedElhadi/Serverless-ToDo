@@ -88,16 +88,17 @@ functions:
     handler: src/lambda/http/createTodo.handler
     events:
       - http:
-          method: post
-          path: todos
-          cors: true
-          authorizer: Auth
-          reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a new todo item
             description: Create a new todo item
             requestModels:
               'application/json': ToDoCreateRequest
+          method: post
+          path: todos
+          cors: true
+          authorizer: Auth
+          reqValidatorName: RequestBodyValidator
+          
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -110,14 +111,15 @@ functions:
     handler: src/lambda/http/updateTodo.handler
     events:
       - http:
-          method: patch
-          path: todos/{todoId}
-          reqValidatorName: RequestBodyValidator
           documentation:
             summary: Update a todo item
             description: Update a todo item
             requestModels:
               'application/json': ToDoUpdateRequest
+          method: patch
+          path: todos/{todoId}
+          reqValidatorName: RequestBodyValidator
+          
     iamRoleStatements:
     - Effect: Allow
       Action:

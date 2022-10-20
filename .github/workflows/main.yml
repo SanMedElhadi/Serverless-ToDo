@@ -17,10 +17,9 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        args: -c "cd ./backend"
         entrypoint: /bin/sh
         node-version: ${{ matrix.node-version }}
-    - run: npm install && npm ci
+    - run: cd ./backend && npm install && npm ci
     - name: serverless deploy
       uses: serverless/github-action@v3.1
       with:

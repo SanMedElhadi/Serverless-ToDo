@@ -1,7 +1,7 @@
 # TODO: Change the name of the org 
 org: sanmeh369 # sls login
-app: serverless-todo-app
-service: serverless-todo-app
+app: sls-todo-app
+service: sls-todo-app
 
 plugins:
   - serverless-webpack
@@ -97,8 +97,7 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
-          reqValidatorName: RequestBodyValidator
-          
+          reqValidatorName: RequestBodyValidator    
     iamRoleStatements:
     - Effect: Allow
       Action:
@@ -118,8 +117,7 @@ functions:
               'application/json': ToDoUpdateRequest
           method: patch
           path: todos/{todoId}
-          reqValidatorName: RequestBodyValidator
-          
+          reqValidatorName: RequestBodyValidator 
     iamRoleStatements:
     - Effect: Allow
       Action:

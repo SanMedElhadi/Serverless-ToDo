@@ -207,6 +207,8 @@ resources:
             AttributeType: S
           - AttributeName: attachmentUrl
             AttributeType: S
+          - AttributeName: createdAt
+            AttributeType: S
         KeySchema:
           - AttributeName: userId
             KeyType: HASH

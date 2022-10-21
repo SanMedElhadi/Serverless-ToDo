@@ -1,7 +1,7 @@
 # TODO: Change the name of the org 
 org: sanmeh369 # sls login
-app: sls-todo-app
-service: sls-todo-app
+app: serverless-todo-app
+service: serverless-todo-app
 
 plugins:
   - serverless-webpack

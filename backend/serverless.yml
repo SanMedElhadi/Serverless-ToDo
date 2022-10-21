@@ -23,8 +23,8 @@ provider:
   # Use these variables in the functions and resouorces section below. For example, 
   # ${self:provider.environment.ATTACHMENT_S3_BUCKET}
   environment:
-    TODOS_TABLE: Todos-${self:provider.stage}
-    TODOS_CREATED_AT_INDEX: CreatedAtIndex
+    TODOS_TABLE: Todos-v1-${self:provider.stage}
+    TODOS_CREATED_AT_INDEX: CreatedAtIndex-v1
     ATTACHMENT_S3_BUCKET: serverless-c4-todo-images-670812705790-${self:provider.stage}
     SIGNED_URL_EXPIRATION: 300
     AUTH_0_SECRET_ID: tbaVbwbpCiIUSLz5ybPFI2hzN1_ARjtN99Gyjku6hECyE3AWnOlHtZYvcfwMuGTS

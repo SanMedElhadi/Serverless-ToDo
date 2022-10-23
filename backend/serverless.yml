@@ -169,11 +169,6 @@ functions:
 resources:
   Resources:
     
-    RestApi:
-      Type: AWS::ApiGateway::RestApi
-      Properties:
-        Name: myRestApi
-    
     GatewayResponse:
       Type: AWS::ApiGateway::GatewayResponse
       Properties:
@@ -181,7 +176,8 @@ resources:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
         ResponseType: MISSING_AUTHENTICATION_TOKEN
-        RestApiId: !Ref RestApi
+        RestApiId: 
+          Ref: ApiGatewayRestApi
         StatusCode: '404'
     
     RequestBodyValidator:

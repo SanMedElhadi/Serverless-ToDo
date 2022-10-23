@@ -24,7 +24,7 @@ export function createTodo(
     todoId : todoId,
     createdAt : createdAt,
     done: false,
-    attachementUrl: '',
+    attachementUrl: 'https://${process.env.IMAGES_S3_BUCKET}.s3.amazonaws.com/${todoId}',
     ...newTodo
   }
   return todosAccess.createTodoItem(newItem);

@@ -13,25 +13,8 @@ export const handler = middy(
     const userId = getUserId(event);
 
     const item = createTodo(newTodo, userId);
-    /*
-    if(!item) {
-        return {
-          statusCode: 404,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
-          body: JSON.stringify({
-            error: 'Todo item was not created'
-          })
-      }
-    }
-    */
     return {
-      statusCode: 201,/*
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Credentials': true
-      },*/
+      statusCode: 201,
       body: JSON.stringify({
         item : item
       })

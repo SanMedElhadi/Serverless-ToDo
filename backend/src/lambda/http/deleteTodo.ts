@@ -14,10 +14,7 @@ export const handler = middy(
     const userId = getUserId(event);
     await deleteTodo (todoId, userId); 
     return{
-      statusCode: 201,/*
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },*/
+      statusCode: 201,
       body: JSON.stringify({
         result : 'Item deleted'
       })

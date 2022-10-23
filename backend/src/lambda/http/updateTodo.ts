@@ -16,10 +16,10 @@ export const handler = middy(
     const userId = getUserId(event);
     await updateTodo (todoId, updatedTodo, userId);
     return {
-      statusCode: 201,
+      statusCode: 201,/*
       headers: {
         'Access-Control-Allow-Origin': '*',
-      },
+      },*/
       body: JSON.stringify({
         result : 'Item updated'
       })

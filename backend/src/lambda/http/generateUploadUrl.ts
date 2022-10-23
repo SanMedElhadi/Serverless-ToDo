@@ -20,10 +20,10 @@ export const handler = middy(
     await todosAccess.updateTodoAttachment(todoId, userId, attachmentUrl);
 
     return {
-      statusCode: 201,
+      statusCode: 201,/*
       headers: {
         'Access-Control-Allow-Origin': '*',
-      },
+      },*/
       body: JSON.stringify({
         uploadUrl: presignedUrl
       })

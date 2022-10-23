@@ -183,6 +183,22 @@ resources:
     # Add necessary AWS resources. You will need at least the following AWS resources
     # TODO: Fill the properties
     # Feel free to change the names as you like. 
+
+    RestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: myRestApi
+    
+    GatewayResponse:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: MISSING_AUTHENTICATION_TOKEN
+        RestApiId: !Ref RestApi
+        StatusCode: '404'
+
     GatewayResponseDefault4XX:
       Type: AWS::ApiGateway::GatewayResponse
       Properties:
@@ -191,7 +207,7 @@ resources:
           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
         ResponseType: MISSING_AUTHENTICATION_TOKEN
         RestApiId: 
-          Ref: ApiGatewayRestApi
+          Ref: !Ref RestApi #ApiGatewayRestApi
         StatusCode: '404'
     
     RequestBodyValidator:
@@ -199,7 +215,7 @@ resources:
       Properties:
         Name: 'request-body-validator'
         RestApiId:
-          Ref: ApiGatewayRestApi
+          Ref: !Ref RestApi #ApiGatewayRestApi
         ValidateRequestBody: true
         ValidateRequestParameters: false
 
@@ -247,8 +263,7 @@ resources:
         BucketName: ${self:provider.environment.ATTACHMENT_S3_BUCKET}
         CorsConfiguration:
           CorsRules:
-            -
-              AllowedOrigins:
+            - AllowedOrigins:
                 - '*'
               AllowedHeaders:
                 - '*'
@@ -259,6 +274,7 @@ resources:
                 - DELETE
                 - HEAD
               MaxAge: 3000
+              Id: myCORSRuleId1
 
     # TODO: Complete the policy below and attach it to the bucket defined above
     # For cross referencing the name of the bucket, use "!Ref AttachmentsBucket"

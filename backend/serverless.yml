@@ -7,6 +7,8 @@ plugins:
   - serverless-webpack
   - serverless-iam-roles-per-function
   - serverless-plugin-tracing
+  - serverless-reqvalidator-plugin
+  - serverless-aws-documentation
 
 provider:
   name: aws
@@ -98,10 +100,6 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
-          request:
-            # Schema that will be used to validate incoming requests
-            schema:
-              application/json: ${file(models/create-todo-model.json)}
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a new todo item
@@ -129,10 +127,6 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
-          request:
-            # Schema that will be used to validate incoming requests
-            schema:
-              application/json: ${file(models/update-todo-model.json)}
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Update a todo item

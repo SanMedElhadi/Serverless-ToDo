@@ -55,9 +55,9 @@ export class TodosAccess{
     Item: todoItem
   }
 
-  const result = await docClient.put(params).promise();
+  await docClient.put(params).promise();
   logger.info('Todo Created', todoItem);
-  return result.Item; // todoItem
+  return params.Item;
 }
 
   async deleteTodoItem(todoId: string, userId: string): Promise<void> {

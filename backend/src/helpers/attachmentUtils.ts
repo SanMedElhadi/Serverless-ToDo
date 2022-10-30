@@ -15,7 +15,7 @@ getUploadUrl(todoId: string): string {
     const presignedUrl = s3.getSignedUrl('putObject', { // The URL will allow to perform the PUT operation
         Bucket: process.env.ATTACHMENT_S3_BUCKET, // Name of an S3 bucket
         Key: todoId, // id of an object this URL allows access to
-        Expires: '300'  // A URL is only valid for 5 minutes
+        Expires: 300  // A URL is only valid for 5 minutes
     })
     return presignedUrl;
 }

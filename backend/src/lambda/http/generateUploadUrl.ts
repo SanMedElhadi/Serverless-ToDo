@@ -13,11 +13,11 @@ const todosAccess = new TodosAccess();
 export const handler = middy(
   async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const todoId = event.pathParameters.todoId
-    const IMAGES_S3_BUCKET = process.env.IMAGES_S3_BUCKET;
+    const ATTACHMENT_S3_BUCKET = process.env.ATTACHMENT_S3_BUCKET;
     // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
     const userId = getUserId(event);
     const presignedUrl = await createAttachmentPresignedUrl(todoId);   
-    const attachmentUrl = ''.concat('https://', IMAGES_S3_BUCKET, '.s3.amazonaws.com/', todoId);
+    const attachmentUrl = ''.concat('https://', ATTACHMENT_S3_BUCKET, '.s3.amazonaws.com/', todoId);
     await todosAccess.updateTodoAttachment(todoId, userId, attachmentUrl);
 
     return {

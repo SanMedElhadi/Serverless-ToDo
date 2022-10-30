@@ -57,8 +57,7 @@ export const handler = async (
 }
 
 async function verifyToken(authHeader: string): Promise<JwtPayload> {
-  //const token = getToken(authHeader)
-  const token = authHeader;
+  const token = getToken(authHeader)
   logger.info('Verifying Token', token);
   //const jwt: Jwt = decode(token, { complete: true }) as Jwt
 
@@ -72,6 +71,8 @@ async function verifyToken(authHeader: string): Promise<JwtPayload> {
 
 function getToken(authHeader: string): string {
   
+  logger.info('Auth Header : ', authHeader);
+
   if (!authHeader) throw new Error('No authentication header')
 
   if (!authHeader.toLowerCase().startsWith('bearer '))

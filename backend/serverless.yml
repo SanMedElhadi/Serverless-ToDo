@@ -98,6 +98,10 @@ functions:
           path: todos
           cors: true
           authorizer: Auth
+          request:
+            # Schema that will be used to validate incoming requests
+            schema:
+              application/json: ${file(src/models/create-todo-model.json)}
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a new todo item

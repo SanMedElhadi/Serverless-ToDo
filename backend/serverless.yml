@@ -54,10 +54,10 @@ custom:
     models:
       - name: ToDoCreateRequest
         contentType: application/json
-        schema: ${file(models/create-todo-model.json)}
+        schema: ${file(src/models/create-todo-model.json)}
       - name: ToDoUpdateRequest  
         contentType: application/json
-        schema: ${file(models/update-todo-model.json)}
+        schema: ${file(src/models/update-todo-model.json)}
 
 functions:
 

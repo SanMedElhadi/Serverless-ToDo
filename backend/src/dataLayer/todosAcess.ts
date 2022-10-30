@@ -75,12 +75,12 @@ export class TodosAccess{
     }
   }
 
-  return docClient
+  await docClient
     .delete(params)
-    .promise()
-    .then(() => {
-      logger.info('Todo Deleted');
-    })
+    .promise();
+  
+  logger.info('Todo Deleted');
+  return undefined;
 }
 
 async updateTodoItem(
@@ -113,12 +113,11 @@ async updateTodoItem(
     ReturnValues: 'UPDATED_NEW'
   }
 
-  return docClient
+  await docClient
     .update(params)
-    .promise()
-    .then(() => {
-      logger.info('Todo Updated')
-    })
+    .promise();
+  logger.info('Todo Updated')
+  return undefined;
 }
 
  async getTodoItem(todoId: string, userId: string): Promise<TodoItem> {
@@ -136,10 +135,11 @@ async updateTodoItem(
     }
   }
 
-  return docClient
+  const result = await docClient
     .get(params)
-    .promise()
-    .then(result => result.Item as TodoItem)
+    .promise();
+
+  return result => result.Item as TodoItem
 }
 
 async userExists(userId: string): Promise<boolean> {
@@ -152,10 +152,11 @@ async userExists(userId: string): Promise<boolean> {
     }
   }
 
-  return docClient
+  const result = docClient
     .get(params)
-    .promise()
-    .then(result => !!result.Item)
+    .promise();
+  
+  return !!result.Item
 }
 
 async updateTodoAttachment(
@@ -178,12 +179,12 @@ async updateTodoAttachment(
     ReturnValues: 'UPDATED_NEW'
   }
 
-  return docClient
+  await docClient
     .update(params)
-    .promise()
-    .then(() => {
-      logger.info('Attachement Updated')
-    })
+    .promise();
+  
+  logger.info('Attachement Updated')
+  return undefined;
 }
 
 }

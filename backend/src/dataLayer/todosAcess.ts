@@ -139,9 +139,9 @@ async updateTodoItem(
     .get(params)
     .promise();
 
-  return result => result.Item as TodoItem
+  return result.Item as TodoItem
 }
-
+/*
 async userExists(userId: string): Promise<boolean> {
   logger.info('Checking if a user exists')
 
@@ -158,7 +158,7 @@ async userExists(userId: string): Promise<boolean> {
   
   return !!result.Item
 }
-
+*/
 async updateTodoAttachment(
   todoId: string,
   userId: string,

@@ -17,7 +17,7 @@ export const handler = middy(
     // TODO: Return a presigned URL to upload a file for a TODO item with the provided id
     const userId = getUserId(event);
     const presignedUrl = await createAttachmentPresignedUrl(todoId);   
-    const attachmentUrl = ''.concat('https://', IMAGES_S3_BUCKET, '.s3.amazonaws.com/${todoId}');
+    const attachmentUrl = ''.concat('https://', IMAGES_S3_BUCKET, '.s3.amazonaws.com/', todoId);
     await todosAccess.updateTodoAttachment(todoId, userId, attachmentUrl);
 
     return {

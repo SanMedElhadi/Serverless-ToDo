@@ -85,18 +85,3 @@ function getToken(authHeader: string): string {
 
   return token
 }
-/*
-function getJwks(): Promise<any> {
-  return Axios.get(jwksUrl).then(response => {
-    //response.data.keys
-    const signingKeys = response.data.keys.filter(key => key.use === 'sig' // JWK property `use` determines the JWK is for signing
-      && key.kty === 'RSA' // We are only supporting RSA (RS256)
-      && key.kid           // The `kid` must be present to be useful for later
-      && ((key.x5c && key.x5c.length) || (key.n && key.e)) // Has useful public keys
-    ).map(key => {
-      return { kid: key.kid, nbf: key.nbf, publicKey: certToPEM(key.x5c[0]) };
-    }
-    );
-  })
-}
-*/

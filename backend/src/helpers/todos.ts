@@ -9,7 +9,7 @@ import * as uuid from 'uuid'
 
 // TODO: Implement businessLogic
 
-//const logger = createLogger('TodosAccess')
+const logger = createLogger('TodosAccess')
 const todosAccess = new TodosAccess();
 const attachmentUtils = new AttachmentUtils();
 
@@ -27,6 +27,7 @@ export function createTodo(
     attachementUrl: ''.concat('https://', process.env.ATTACHMENT_S3_BUCKET, '.s3.amazonaws.com/', todoId),
     ...newTodo
   }
+  logger.info('Todo to be created : ', newItem);
   return todosAccess.createTodoItem(newItem);
 }
 

@@ -38,7 +38,7 @@ export class TodosAccess{
     }
 
     const result = await docClient.query(params).promise();
-    
+    logger.info('Todos : ', result);
     return result.Items as TodoItem[];
   }
 
@@ -56,7 +56,7 @@ export class TodosAccess{
   }
 
   await docClient.put(params).promise();
-  
+  logger.info('Todo Created', todoItem);
   return todoItem;
 }
 
@@ -78,7 +78,9 @@ export class TodosAccess{
   return docClient
     .delete(params)
     .promise()
-    .then(() => null)
+    .then(() => {
+      logger.info('Todo Deleted');
+    })
 }
 
 async updateTodoItem(
@@ -114,7 +116,9 @@ async updateTodoItem(
   return docClient
     .update(params)
     .promise()
-    .then(() => null)
+    .then(() => {
+      logger.info('Todo Updated')
+    })
 }
 
  async getTodoItem(todoId: string, userId: string): Promise<TodoItem> {
@@ -177,7 +181,9 @@ async updateTodoAttachment(
   return docClient
     .update(params)
     .promise()
-    .then(() => null)
+    .then(() => {
+      logger.info('Attachement Updated')
+    })
 }
 
 }

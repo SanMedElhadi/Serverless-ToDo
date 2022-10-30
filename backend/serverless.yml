@@ -54,10 +54,10 @@ custom:
     models:
       - name: ToDoCreateRequest
         contentType: application/json
-        schema: ${file(src/models/create-todo-model.json)}
+        schema: ${file(models/create-todo-model.json)}
       - name: ToDoUpdateRequest  
         contentType: application/json
-        schema: ${file(src/models/update-todo-model.json)}
+        schema: ${file(models/update-todo-model.json)}
 
 functions:
 
@@ -101,7 +101,7 @@ functions:
           request:
             # Schema that will be used to validate incoming requests
             schema:
-              application/json: ${file(src/models/create-todo-model.json)}
+              application/json: ${file(models/create-todo-model.json)}
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Create a new todo item
@@ -129,6 +129,10 @@ functions:
           path: todos/{todoId}
           cors: true
           authorizer: Auth
+          request:
+            # Schema that will be used to validate incoming requests
+            schema:
+              application/json: ${file(models/update-todo-model.json)}
           reqValidatorName: RequestBodyValidator
           documentation:
             summary: Update a todo item
